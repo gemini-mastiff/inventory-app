@@ -112,12 +112,16 @@ video {
 }
 
 body {
+  min-height: 100vh;
   background-color: var(--DARK-COLOUR);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 /* HEADER */
 
 .header {
+  min-height: 50px;
   background-color: var(--ACCENT-1);
   color: var(--MAIN-COLOUR);
   padding: 1em 0;
@@ -171,4 +175,18 @@ body {
 .album-item__release,
 .album-item__artist {
   font-size: 1.2rem;
+}
+
+/* FOOTER */
+
+.footer {
+  min-height: 50px;
+  background-color: var(--ACCENT-2);
+}
+
+.footer-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
