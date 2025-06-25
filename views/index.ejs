@@ -8,19 +8,21 @@
   </head>
   <body>
     <%- include('header') %>
-    <ul>
-      <% albums.forEach(album => { %>
-      <li>
-        <img
-          src="<%= album.cover_image_url %>"
-          alt="<%= album.title %> cover"
-        />
-        <h3><%= album.title %></h3>
-        <p><%= album.artists %></p>
-        <p><%= album.release_year %></p>
-        <p><%= album.genres %></p>
-      </li>
-      <% }) %>
-    </ul>
+    <div class="width-container">
+      <ul>
+        <% albums.forEach(album => { %>
+        <li>
+          <img
+            src="<%= album.cover_image_url %>"
+            alt="<%= album.title %> cover"
+          />
+          <h3><%= album.title %></h3>
+          <p><%= album.artists %></p>
+          <p><%= album.release_year %></p>
+          <p><%= album.genres %></p>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
   </body>
 </html>
