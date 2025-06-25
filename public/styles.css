@@ -89,6 +89,12 @@ video {
   vertical-align: baseline;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --MAIN-COLOUR: #f5f9ee;
   --DARK-COLOUR: #eef2e2;
@@ -103,4 +109,66 @@ video {
   width: 85%;
   max-width: 1100px;
   margin: 0 auto;
+}
+
+body {
+  background-color: var(--DARK-COLOUR);
+}
+
+/* HEADER */
+
+.header {
+  background-color: var(--ACCENT-1);
+  color: var(--MAIN-COLOUR);
+  padding: 1em 0;
+}
+
+.header__heading {
+  font-size: 2rem;
+}
+
+/* ALBUM LIST */
+
+.album-list-container {
+  margin-top: 1em;
+}
+
+.album-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+}
+
+.album-item {
+  background-color: var(--MAIN-COLOUR);
+  display: flex;
+  align-items: start;
+  gap: 0.75em;
+  padding: 1em;
+}
+
+.album-item__cover {
+  width: 100%;
+  max-width: 125px;
+  height: auto;
+}
+
+.album-item__title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.25em;
+}
+
+.album-item__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.album-item__link:hover {
+  color: var(--ACCENT-1);
+}
+
+.album-item__release,
+.album-item__artist {
+  font-size: 1.2rem;
 }

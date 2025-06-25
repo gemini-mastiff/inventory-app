@@ -8,18 +8,24 @@
   </head>
   <body>
     <%- include('header') %>
-    <div class="width-container">
-      <ul>
+    <div class="album-list-container width-container">
+      <ul class="album-list">
         <% albums.forEach(album => { %>
-        <li>
+        <li class="album-item">
           <img
+            class="album-item__cover"
             src="<%= album.cover_image_url %>"
             alt="<%= album.title %> cover"
           />
-          <h3><%= album.title %></h3>
-          <p><%= album.artists %></p>
-          <p><%= album.release_year %></p>
-          <p><%= album.genres %></p>
+          <div class="album-item__info">
+            <h3 class="album-item__title">
+              <a class="album-item__link" href="/albums/<%= album.id %>"
+                ><%= album.title %></a
+              >
+            </h3>
+            <p class="album-item__release"><%= album.release_year %></p>
+            <p class="album-item__artist"><%= album.artists %></p>
+          </div>
         </li>
         <% }) %>
       </ul>
