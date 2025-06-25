@@ -6,7 +6,8 @@ const SQL = `
 CREATE TABLE albums (
   id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
-  release_year INTEGER
+  release_year INTEGER,
+  cover_image_url TEXT
 );
 
 CREATE TABLE artists (
