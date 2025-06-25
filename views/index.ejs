@@ -7,5 +7,19 @@
   </head>
   <body>
     <h1><%=title %></h1>
+    <ul>
+      <% albums.forEach(album => { %>
+      <li>
+        <img
+          src="<%= album.cover_image_url %>"
+          alt="<%= album.title %> cover"
+        />
+        <h3><%= album.title %></h3>
+        <p><%= album.artists %></p>
+        <p><%= album.release_year %></p>
+        <p><%= album.genres %></p>
+      </li>
+      <% }) %>
+    </ul>
   </body>
 </html>
