@@ -38,7 +38,7 @@ CREATE TABLE album_artists (
 
 
 INSERT INTO albums (title, release_year)
-VALUES ('Second Stage Turbine Blade', 2002);
+VALUES ('The Second Stage Turbine Blade', 2002);
 
 INSERT INTO artists (name, formed_year)
 VALUES ('Coheed and Cambria', 1995);
