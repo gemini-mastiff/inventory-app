@@ -196,7 +196,7 @@ body {
 
 /* ALBUM DETAILS */
 
-.album-details-container {
+.album-details {
   background-color: var(--MAIN-COLOUR);
   padding: 1em;
 }
@@ -218,6 +218,45 @@ body {
 
 .album-description__header {
   font-weight: bold;
+}
+
+/* NEW ALBUM */
+
+.form {
+  background-color: var(--MAIN-COLOUR);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.form-header {
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper > input,
+.input-wrapper > textarea {
+  font: inherit;
+  padding: 0.25em 0.5em;
+  border: none;
+  border-radius: 1em;
+}
+
+.input-wrapper > input:focus,
+.input-wrapper > textarea:focus {
+  outline: none;
+  border: 2px solid var(--ACCENT-1);
+}
+
+.form-submit-btn {
+  align-self: flex-end;
+  margin-top: 1em;
 }
 
 /* FOOTER */
