@@ -27,7 +27,8 @@ async function getAlbum(albumId) {
      release_year, 
      STRING_AGG(DISTINCT artists.name, ', ') AS artists, 
      STRING_AGG(DISTINCT genres.name, ', ') AS genres,
-     cover_image_url
+     cover_image_url,
+     albums.description
      FROM albums
      JOIN album_artists AS aa ON albums.id = aa.album_id
      JOIN artists ON artists.id = aa.artist_id
