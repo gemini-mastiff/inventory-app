@@ -3,5 +3,6 @@ const controller = require("../controllers/controller.js");
 const router = express.Router();
 
 router.get("/", controller.getIndex);
+router.get("/albums/:albumId", controller.getAlbumDetails);
 
 module.exports = router;

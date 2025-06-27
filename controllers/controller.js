@@ -12,6 +12,13 @@ const getIndex = asyncHandler(async (req, res) => {
   res.render("index", { title: "Album Manager", albums: albums });
 });
 
+const getAlbumDetails = asyncHandler(async (req, res) => {
+  const { albumId } = req.params;
+  const album = await db.getAlbum(albumId);
+  res.send(album);
+});
+
 module.exports = {
   getIndex,
+  getAlbumDetails,
 };
