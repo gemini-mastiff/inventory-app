@@ -42,7 +42,19 @@ async function getAlbumById(albumId) {
   return rows;
 }
 
+async function checkForAlbum(title, year) {
+  const { rows } = await pool.query(
+    `
+  SELECT 1 FROM albums
+  WHERE title = $1 AND release_year = $2
+  `,
+    [title, year]
+  );
+  return rows;
+}
+
 module.exports = {
   getAllAlbums,
   getAlbumById,
+  checkForAlbum,
 };
