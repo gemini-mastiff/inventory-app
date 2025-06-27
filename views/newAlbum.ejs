@@ -17,7 +17,15 @@
         </div>
         <div class="input-wrapper">
           <label for="release_year">Release Year:</label>
-          <input type="date" name="release_year" id="release_year" />
+          <input
+            type="number"
+            name="release_year"
+            id="release_year"
+            step="1"
+            min="1900"
+            max="<%= currentYear %>"
+            value="<%= currentYear %>"
+          />
         </div>
         <div class="input-wrapper">
           <label for="artist">Artist:</label>
