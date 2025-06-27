@@ -33,10 +33,10 @@ const getNewAlbumForm = (req, res) => {
 const postNewAlbumForm = asyncHandler(async (req, res) => {
   const data = req.body;
   const [albumExists] = await db.checkForAlbum(data.title, data.release_year);
-  console.log(albumExists);
   if (albumExists) {
     throw new CustomError("Album already exists");
   }
+
   let [artistId] = await db.getArtistId(data.artist);
   if (!artistId) {
     await db.addArtist(data.artist);
