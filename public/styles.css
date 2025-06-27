@@ -125,6 +125,7 @@ body {
   background-color: var(--ACCENT-1);
   color: var(--MAIN-COLOUR);
   padding: 0.5em 0;
+  margin-bottom: 1em;
 }
 
 .header-content {
@@ -152,10 +153,6 @@ body {
 
 /* ALBUM LIST */
 
-.album-list-container {
-  margin-top: 1em;
-}
-
 .album-list {
   display: flex;
   flex-direction: column;
@@ -176,7 +173,7 @@ body {
   height: auto;
 }
 
-.album-item__title {
+.album-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.25em;
@@ -197,11 +194,38 @@ body {
   font-size: 1.2rem;
 }
 
+/* ALBUM DETAILS */
+
+.album-details-container {
+  background-color: var(--MAIN-COLOUR);
+  padding: 1em;
+}
+
+.album-details__main {
+  display: flex;
+  gap: 1em;
+}
+
+.album-details__cover {
+  width: 50%;
+  max-width: 600px;
+  height: auto;
+}
+
+.album-description {
+  margin-top: 1em;
+}
+
+.album-description__header {
+  font-weight: bold;
+}
+
 /* FOOTER */
 
 .footer {
   min-height: 50px;
   background-color: var(--ACCENT-2);
+  margin-top: 1em;
 }
 
 .footer-content {
