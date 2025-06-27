@@ -18,7 +18,7 @@ async function getAllAlbums() {
   return rows;
 }
 
-async function getAlbum(albumId) {
+async function getAlbumById(albumId) {
   const { rows } = await pool.query(
     `
       SELECT
@@ -44,5 +44,5 @@ async function getAlbum(albumId) {
 
 module.exports = {
   getAllAlbums,
-  getAlbum,
+  getAlbumById,
 };

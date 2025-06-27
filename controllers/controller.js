@@ -14,7 +14,7 @@ const getIndex = asyncHandler(async (req, res) => {
 
 const getAlbumDetails = asyncHandler(async (req, res) => {
   const { albumId } = req.params;
-  const [album] = await db.getAlbum(albumId);
+  const [album] = await db.getAlbumById(albumId);
 
   if (!album) {
     throw new CustomError("Album not found", 404);
@@ -24,7 +24,10 @@ const getAlbumDetails = asyncHandler(async (req, res) => {
 });
 
 const getNewAlbumForm = (req, res) => {
-  res.render("newAlbum", { title: "New Album" });
+  res.render("newAlbum", {
+    title: "New Album",
+    currentYear: new Date().getFullYear(),
+  });
 };
 
 const postNewAlbumForm = asyncHandler(async (req, res) => {
