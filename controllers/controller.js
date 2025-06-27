@@ -14,8 +14,8 @@ const getIndex = asyncHandler(async (req, res) => {
 
 const getAlbumDetails = asyncHandler(async (req, res) => {
   const { albumId } = req.params;
-  const album = await db.getAlbum(albumId);
-  res.send(album);
+  const [album] = await db.getAlbum(albumId);
+  res.render("albumDetails", { title: `${album.title} Details`, album: album });
 });
 
 module.exports = {
