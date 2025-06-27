@@ -22,8 +22,14 @@ const getNewAlbumForm = (req, res) => {
   res.render("newAlbum", { title: "New Album" });
 };
 
+const postNewAlbumForm = asyncHandler(async (req, res) => {
+  const data = req.body;
+  res.send(data);
+});
+
 module.exports = {
   getIndex,
   getAlbumDetails,
   getNewAlbumForm,
+  postNewAlbumForm,
 };
