@@ -7,12 +7,14 @@ CREATE TABLE albums (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title TEXT NOT NULL,
   release_year INTEGER,
-  cover_image_url TEXT
+  cover_image_url TEXT,
+  description TEXT
 );
 
 CREATE TABLE artists (
   id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT NOT NULL,
+  bio TEXT,
   formed_year INTEGER,
   disband_year INTEGER
 );
