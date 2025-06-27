@@ -4,21 +4,21 @@ const { Client } = require("pg");
 const SQL = `
 
 CREATE TABLE albums (
-  id SERIAL PRIMARY KEY,
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   title TEXT NOT NULL,
   release_year INTEGER,
   cover_image_url TEXT
 );
 
 CREATE TABLE artists (
-  id SERIAL PRIMARY KEY,
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT NOT NULL,
-  formed_year INTEGER NOT NULL,
+  formed_year INTEGER,
   disband_year INTEGER
 );
 
 CREATE TABLE genres (
-  id SERIAL PRIMARY KEY,
+  id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   name TEXT NOT NULL
 );
 
