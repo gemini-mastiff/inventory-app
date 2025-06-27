@@ -12,8 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/", router);
 app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
   console.log(err);
-  res.status(err.status || 500).send(err);
+  res.status(statusCode).json({ statusCode, message });
 });
 
 const PORT = process.env.PORT || 3000;
