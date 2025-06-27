@@ -102,7 +102,7 @@ video {
   --ACCENT-2: #f8da5b;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
-  line-height: 1.5rem;
+  line-height: 1.5;
 }
 
 .width-container {
@@ -124,11 +124,30 @@ body {
   min-height: 50px;
   background-color: var(--ACCENT-1);
   color: var(--MAIN-COLOUR);
-  padding: 1em 0;
+  padding: 0.5em 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header__heading {
   font-size: 2rem;
+}
+
+.header-list {
+  list-style-type: none;
+}
+
+.header-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  opacity: 0.85;
 }
 
 /* ALBUM LIST */
@@ -161,6 +180,7 @@ body {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 0.25em;
+  line-height: 1em;
 }
 
 .album-item__link {
