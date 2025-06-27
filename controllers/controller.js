@@ -15,6 +15,11 @@ const getIndex = asyncHandler(async (req, res) => {
 const getAlbumDetails = asyncHandler(async (req, res) => {
   const { albumId } = req.params;
   const [album] = await db.getAlbum(albumId);
+
+  if (!album) {
+    throw new CustomError("Album not found", 404);
+  }
+
   res.render("albumDetails", { title: `${album.title} Details`, album: album });
 });
 
