@@ -18,7 +18,12 @@ const getAlbumDetails = asyncHandler(async (req, res) => {
   res.render("albumDetails", { title: `${album.title} Details`, album: album });
 });
 
+const getNewAlbumForm = (req, res) => {
+  res.render("newAlbum", { title: "New Album" });
+};
+
 module.exports = {
   getIndex,
   getAlbumDetails,
+  getNewAlbumForm,
 };
