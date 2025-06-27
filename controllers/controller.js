@@ -32,12 +32,23 @@ const getNewAlbumForm = (req, res) => {
 
 const postNewAlbumForm = asyncHandler(async (req, res) => {
   const data = req.body;
-  const [prevAlbum] = await db.checkForAlbum(data.title, data.release_year);
-  console.log(prevAlbum);
-  if (prevAlbum) {
+  const [albumExists] = await db.checkForAlbum(data.title, data.release_year);
+  console.log(albumExists);
+  if (albumExists) {
     throw new CustomError("Album already exists");
   }
-  res.send(data);
+  let [artistId] = await db.getArtistId(data.artist);
+  if (!artistId) {
+    await db.addArtist(data.artist);
+  }
+  await db.addAlbum(
+    data.title,
+    data.release_year,
+    data.cover_image_url,
+    data.description,
+    data.artist
+  );
+  res.redirect("/");
 });
 
 module.exports = {
