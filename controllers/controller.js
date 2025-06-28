@@ -100,6 +100,16 @@ const getAlbumDelete = asyncHandler(async (req, res) => {
   res.render("delAlbum", { title: "Delete Album", album: album });
 });
 
+const postAlbumDelete = asyncHandler(async (req, res) => {
+  const { albumId } = req.params;
+  const [album] = await db.getAlbumById(albumId);
+  const [artist] = await db.getArtistId(album.artists);
+  console.log(albumId);
+  console.log(artist.id);
+  await db.delAlbum(Number(albumId), artist.id);
+  res.redirect("/");
+});
+
 module.exports = {
   getIndex,
   getAlbumDetails,
@@ -108,4 +118,5 @@ module.exports = {
   getAlbumUpdateForm,
   postAlbumUpdateForm,
   getAlbumDelete,
+  postAlbumDelete,
 };

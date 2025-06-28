@@ -149,6 +149,23 @@ async function updateAlbum(data) {
   );
 }
 
+async function delAlbum(albumId, artistId) {
+  await pool.query(
+    `
+    DELETE FROM album_artists
+    WHERE album_id = $1 AND artist_id = $2
+  `,
+    [albumId, artistId]
+  );
+  await pool.query(
+    `
+    DELETE FROM albums
+    WHERE id = $1
+    `,
+    [albumId]
+  );
+}
+
 module.exports = {
   getAllAlbums,
   getAlbumById,
@@ -157,6 +174,7 @@ module.exports = {
   addArtist,
   addAlbum,
   updateAlbum,
+  delAlbum,
 };
 
 // STATEMENT INCLUDING GENRES
