@@ -94,6 +94,12 @@ const postAlbumUpdateForm = asyncHandler(async (req, res) => {
   res.redirect(`/albums/${albumId}`);
 });
 
+const getAlbumDelete = asyncHandler(async (req, res) => {
+  const { albumId } = req.params;
+  const [album] = await db.getAlbumById(albumId);
+  res.render("delAlbum", { title: "Delete Album", album: album });
+});
+
 module.exports = {
   getIndex,
   getAlbumDetails,
@@ -101,4 +107,5 @@ module.exports = {
   postNewAlbumForm,
   getAlbumUpdateForm,
   postAlbumUpdateForm,
+  getAlbumDelete,
 };
