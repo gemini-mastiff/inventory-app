@@ -52,7 +52,10 @@
 <%= album.description %></textarea
           >
         </div>
-        <button class="form-submit-btn" type="submit">Submit</button>
+        <div class="form-btns">
+          <a class="form-btn" href="/albums/<%= album.id %>">Cancel</a>
+          <button class="form-btn" type="submit">Submit</button>
+        </div>
       </form>
     </div>
     <%- include('footer') %>
