@@ -221,6 +221,25 @@ body {
   font-weight: bold;
 }
 
+.album-details__btns {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1em;
+}
+
+.album-details__btn {
+  color: var(--MAIN-COLOUR);
+  text-decoration: none;
+  background-color: var(--ACCENT-1);
+  padding: 0.5em 0.75em;
+  border-radius: 100px;
+}
+
+.album-details__btn:hover {
+  opacity: 0.9;
+}
+
 /* NEW ALBUM */
 
 .form {
