@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('header') %>
+    <div class="form-container width-container">
+      <form class="form" action="/albums/<%= album.id %>/update" method="POST">
+        <h1 class="form-header">Update Album: <%= album.title %></h1>
+        <div class="input-wrapper">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value="<%= album.title %>"
+          />
+        </div>
+        <div class="input-wrapper">
+          <label for="release_year">Release Year:</label>
+          <input
+            type="number"
+            name="release_year"
+            id="release_year"
+            step="1"
+            min="1900"
+            max="<%= currentYear %>"
+            value="<%= album.release_year %>"
+          />
+        </div>
+        <div class="input-wrapper">
+          <label for="artist">Artist:</label>
+          <input
+            type="text"
+            name="artist"
+            id="artist"
+            value="<%= album.artists %>"
+          />
+        </div>
+        <div class="input-wrapper">
+          <label for="cover">Album Cover:</label>
+          <input type="file" name="cover_image_url" id="cover" />
+          <p>(Leave empty to keep the same image)</p>
+        </div>
+        <div class="input-wrapper">
+          <label for="description">Description:</label>
+          <textarea name="description" id="description">
+<%= album.description %></textarea
+          >
+        </div>
+        <button class="form-submit-btn" type="submit">Submit</button>
+      </form>
+    </div>
+    <%- include('footer') %>
+  </body>
+</html>
