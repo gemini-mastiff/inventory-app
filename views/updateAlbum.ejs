@@ -52,6 +52,10 @@
 <%= album.description %></textarea
           >
         </div>
+        <div class="input-wrapper">
+          <label for="password">Enter admin password to update:</label>
+          <input type="password" name="password" id="password" />
+        </div>
         <div class="form-btns">
           <a class="form-btn" href="/albums/<%= album.id %>">Cancel</a>
           <button class="form-btn" type="submit">Submit</button>

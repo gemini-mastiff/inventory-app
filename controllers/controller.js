@@ -67,6 +67,12 @@ const getAlbumUpdateForm = asyncHandler(async (req, res) => {
 const postAlbumUpdateForm = asyncHandler(async (req, res) => {
   const { albumId } = req.params;
   const data = req.body;
+  if (data.password !== process.env.PASSWORD) {
+    throw new CustomError(
+      "User does not have permission to update this item",
+      403
+    );
+  }
   const [existingAlbum] = await db.getAlbumByNameAndYear(
     data.title,
     data.release_year
@@ -102,6 +108,13 @@ const getAlbumDelete = asyncHandler(async (req, res) => {
 
 const postAlbumDelete = asyncHandler(async (req, res) => {
   const { albumId } = req.params;
+  const { password } = req.body;
+  if (password !== process.env.PASSWORD) {
+    throw new CustomError(
+      "User does not have permission to delete this item",
+      403
+    );
+  }
   const [album] = await db.getAlbumById(albumId);
   const [artist] = await db.getArtistId(album.artists);
   console.log(albumId);
