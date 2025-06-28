@@ -26,6 +26,10 @@
           <h3 class="album-description__header">Description:</h3>
           <p class="album-description__text"><%= album.description || "A description hasn't been added for this album yet." %></p>
         </div>
+        <div class="album-details__btns">
+          <a class="album-details__btn" href="/albums/<%= album.id %>/update">Modify Album</a>
+          <a class="album-details__btn" href="/albums/<%= album.id %>/delete">Delete Album</a>
+        </div>
       </div>
     </div>
     <%- include('footer') %>
