@@ -32,7 +32,10 @@ const getNewAlbumForm = (req, res) => {
 
 const postNewAlbumForm = asyncHandler(async (req, res) => {
   const data = req.body;
-  const [albumExists] = await db.checkForAlbum(data.title, data.release_year);
+  const [albumExists] = await db.getAlbumByNameAndYear(
+    data.title,
+    data.release_year
+  );
   if (albumExists) {
     throw new CustomError("Album already exists");
   }
@@ -61,10 +64,41 @@ const getAlbumUpdateForm = asyncHandler(async (req, res) => {
   });
 });
 
+const postAlbumUpdateForm = asyncHandler(async (req, res) => {
+  const { albumId } = req.params;
+  const data = req.body;
+  const [existingAlbum] = await db.getAlbumByNameAndYear(
+    data.title,
+    data.release_year
+  );
+  // the id check is to allow user to update the album,
+  // but not turn it into an already existing album.
+  if (existingAlbum && existingAlbum.id !== Number(albumId)) {
+    throw new CustomError("Album already exists");
+  }
+
+  let [artistId] = await db.getArtistId(data.artist);
+  if (!artistId) {
+    await db.addArtist(data.artist);
+  }
+
+  const albumData = {
+    id: Number(albumId),
+    title: data.title,
+    release_year: data.release_year,
+    cover_image_url: data.cover_image_url,
+    description: data.description,
+    artist: data.artist,
+  };
+  await db.updateAlbum(albumData);
+  res.redirect(`/albums/${albumId}`);
+});
+
 module.exports = {
   getIndex,
   getAlbumDetails,
   getNewAlbumForm,
   postNewAlbumForm,
   getAlbumUpdateForm,
+  postAlbumUpdateForm,
 };

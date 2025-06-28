@@ -36,10 +36,31 @@ async function getAlbumById(albumId) {
   return rows;
 }
 
-async function checkForAlbum(title, year) {
+async function getAlbumById(albumId) {
   const { rows } = await pool.query(
     `
-  SELECT 1 FROM albums
+      SELECT
+     albums.id, 
+     title, 
+     release_year, 
+     STRING_AGG(DISTINCT artists.name, ', ') AS artists, 
+     cover_image_url,
+     albums.description
+     FROM albums
+     JOIN album_artists AS aa ON albums.id = aa.album_id
+     JOIN artists ON artists.id = aa.artist_id
+     WHERE albums.id = $1
+     GROUP BY albums.id;
+    `,
+    [albumId]
+  );
+  return rows;
+}
+
+async function getAlbumByNameAndYear(title, year) {
+  const { rows } = await pool.query(
+    `
+  SELECT * FROM albums
   WHERE title = $1 AND release_year = $2;
   `,
     [title, year]
@@ -97,13 +118,45 @@ async function addAlbum(
   return;
 }
 
+async function updateAlbum(data) {
+  await pool.query(
+    `
+    UPDATE albums
+    SET title = $1,
+        release_year = $2,
+        description = $3
+    WHERE id = $4;
+    `,
+    [data.title, data.release_year, data.description, data.id]
+  );
+  if (data.cover_image_url) {
+    await pool.query(
+      `
+      UPDATE albums
+    SET cover_image_url = $1
+    WHERE id = $2;
+      `,
+      [data.cover_image_url, data.id]
+    );
+  }
+  await pool.query(
+    `
+    UPDATE album_artists
+    SET artist_id = (SELECT id FROM artists WHERE name = $1)
+    WHERE album_id = $2;
+    `,
+    [data.artist, data.id]
+  );
+}
+
 module.exports = {
   getAllAlbums,
   getAlbumById,
-  checkForAlbum,
+  getAlbumByNameAndYear,
   getArtistId,
   addArtist,
   addAlbum,
+  updateAlbum,
 };
 
 // STATEMENT INCLUDING GENRES
