@@ -51,9 +51,20 @@ const postNewAlbumForm = asyncHandler(async (req, res) => {
   res.redirect("/");
 });
 
+const getAlbumUpdateForm = asyncHandler(async (req, res) => {
+  const { albumId } = req.params;
+  const [album] = await db.getAlbumById(albumId);
+  res.render("updateAlbum", {
+    title: "Update Album",
+    album: album,
+    currentYear: new Date().getFullYear(),
+  });
+});
+
 module.exports = {
   getIndex,
   getAlbumDetails,
   getNewAlbumForm,
   postNewAlbumForm,
+  getAlbumUpdateForm,
 };
