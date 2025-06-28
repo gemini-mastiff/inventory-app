@@ -13,7 +13,7 @@
         <div class="album-details__main">
           <img
             class="album-details__cover"
-            src="<%= album.cover_image_url %>"
+            src="<%= album.cover_image_url || "/images/default_cover.jpg"%>"
             alt="<%= album.title %> cover"
           />
           <div class="album-details__info">

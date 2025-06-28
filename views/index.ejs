@@ -12,11 +12,8 @@
       <ul class="album-list">
         <% albums.forEach(album => { %>
         <li class="album-item">
-          <img
-            class="album-item__cover"
-            src="<%= album.cover_image_url %>"
-            alt="<%= album.title %> cover"
-          />
+          <img class="album-item__cover" src="<%= album.cover_image_url ||
+          "/images/default_cover.jpg" %>" alt="<%= album.title %> cover" />
           <div class="album-item__info">
             <h3 class="album-title">
               <a class="album-item__link" href="/albums/<%= album.id %>"
